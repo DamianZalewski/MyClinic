@@ -10,21 +10,21 @@
         <ui:composition template="/templates/receptionTemplate.xhtml">
 
             <ui:define name="content">
-                
-                <h3>#{msg.patients}</h3>
+                <h3>#{msg.doctors2}</h3>
 
                 <ul>
-                    <ui:repeat value="#{patientBean.patients}"
-                               var="patient" >
-                       
-                            <li>
-                                <h:outputText value="#{patient.name} #{patient.lastname}"/> 
-                            </li>
-                       
+                    <ui:repeat value="#{doctorBean.doctors}"
+                               var="doctor" >
+                        <li>
+                            <h:link value="#{doctor.name} #{doctor.lastname}"
+                                    outcome="doctor">
+                                <f:param name="item" value="#{doctor.id}" />
+                            </h:link>
+                        </li>
                     </ui:repeat>
                 </ul>
-                
 
+                <h:link value="#{msg.new_doctor}" outcome="add_doctor" />
             </ui:define>
 
         </ui:composition>
